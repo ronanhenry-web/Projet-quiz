@@ -10,5 +10,4 @@ fetch("quiz.json")
 
         document.querySelector('.theme').innerHTML = donne.theme;
         document.querySelector('.total-question').innerHTML = donne.nombreQts;
-
     });
