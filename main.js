@@ -14,47 +14,69 @@ fetch("quiz.json")
     .then(function(response) { return response.json(); })
     .then(function(donnée) {
 
-        /*const numeroQuestion = document.querySelector(".numero-question");
-        document.querySelector('.numero-question').innerHTML = ;*/
-
         const nombreQts = document.querySelector(".nombre-question");
         nombreQts.innerHTML = donnée.nombreQuestion;
-
-        const q = []; //questions
-        //Permet d'avoir dans une variable les questions
-        for (let i = 0; i < donnée.question.length; i++) {
-            let qT = donnée.question[i].q;
-            q.push(qT);
-            //console.log(q);
-        }
 
         let tab = []
         for (let i = 0; i < donnée.question.length; i++) {
             tab.push(donnée.question[i]);
         }
+        //console.log(tab[0].option);
         //console.log(tab[1].option[1]);
+
+        let nombreQt = 0;
+
+        document.querySelector('.btn-start').addEventListener('click', () => {
+            document.querySelector('.home-box').classList.add('hide');
+            document.querySelector('.quiz-box').classList.remove('hide');
+            document.querySelector('.result-box').classList.add('hide');
+        });
 
         document.querySelector('.btn-next').addEventListener('click', () => {
             let min = 0;
-            let max = q.length;
-            let random = Math.floor(Math.random() * (max - min)) + min;
-            if (q.length == 0) {
+            let max = tab.length;
+            let random = Math.floor(Math.random() * (max - min) + min);
+            //console.log(tab[random].q);
+            let containerQuestion = document.querySelector('.option-container');
+            nombreQt = nombreQt + 1;
+            document.querySelector('.numero-question').innerHTML = nombreQt;
+            while (containerQuestion.firstChild) {
+                containerQuestion.removeChild(containerQuestion.firstChild);
+            }
+            if (tab.length == 0) {
                 return;
             } else {
-                document.querySelector('.question-text').innerHTML = q[random];
+                document.querySelector('.question-text').innerHTML = tab[random].q;
                 //console.log(q[random]);
-                q.splice(random, 1);
-                for (let i = 0; i < donnée.question[random].option.length; i++) {
+                for (let i = 0; i < tab[random].option.length; i++) {
                     let button = document.createElement("button");
                     button.classList.add("option");
-                    button.innerHTML = tab[0].option[i];
+                    button.innerHTML = tab[random].option[i];
+                    button.addEventListener('click', () => {
+                        console.log("coucou")
+                    });
                     document.querySelector('.option-container').appendChild(button);
-                    //tab[0].option[i].splice();
                     //console.log(donnée.question.option[length]);
                 }
-
+                tab.splice(random, 1);
             }
         })
 
+        document.querySelector('.btn-score').addEventListener('click', () => {
+            document.querySelector('.home-box').classList.add('hide');
+            document.querySelector('.quiz-box').classList.add('hide');
+            document.querySelector('.result-box').classList.remove('hide');
+        });
 
+        document.querySelector('.btn-restart').addEventListener('click', () => {
+            document.querySelector('.home-box').classList.add('hide');
+            document.querySelector('.quiz-box').classList.remove('hide');
+            document.querySelector('.result-box').classList.add('hide');
+        });
+
+        document.querySelector('.btn-menu').addEventListener('click', () => {
+            document.querySelector('.home-box').classList.remove('hide');
+            document.querySelector('.quiz-box').classList.add('hide');
+            document.querySelector('.result-box').classList.add('hide');
+        });
     });
