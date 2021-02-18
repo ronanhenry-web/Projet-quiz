@@ -9,6 +9,9 @@ fetch("quiz.json")
         const thème = document.querySelector(".theme");
         thème.innerHTML = donnée.theme;
 
+        const questionTot = document.querySelector(".question-tot");
+        questionTot.innerHTML = donnée.nombreQuestion;
+
         document.querySelector('.btn-start').addEventListener('click', () => {
             document.querySelector('.home-box').classList.add('hide');
             document.querySelector('.quiz-box').classList.remove('hide');
@@ -19,6 +22,8 @@ fetch("quiz.json")
         const nombreQts = document.querySelector(".nombre-question");
         nombreQts.innerHTML = donnée.nombreQuestion;
 
+        const afRep = document.querySelector("answer-indicator");
+
         //Menu quiz
         let tab = []
         for (let i = 0; i < donnée.question.length; i++) {
@@ -26,6 +31,7 @@ fetch("quiz.json")
         }
 
         let nombreQt = 0;
+        let totalCorrect = 0;
 
         document.querySelector('.btn-next').addEventListener('click', () => {
             start();
@@ -58,18 +64,19 @@ fetch("quiz.json")
                     button.innerHTML = tab[random].option[i];
                     let reponse = tab[random].reponse;
                     
-                    /*button.addEventListener('click', () => {
+                    button.addEventListener('click', () => {
                         //console.log(reponse);
                         if(button.value == reponse) {
                             totalCorrect = totalCorrect + 1;
                             button.classList.add("correct");
                             //console.log("bravo");
-                            console.log(totalCorrect);
+                            //console.log(totalCorrect);
                         } else {
                             button.classList.add("faux");
                             //console.log("dommage");
-                        } 
-                    });*/
+                        }
+                        //uneReponse();
+                    });
                     
                     document.querySelector('.option-container').appendChild(button);
                     //console.log(donnée.question.option[length]);
@@ -77,4 +84,46 @@ fetch("quiz.json")
                 tab.splice(random, 1);
             }
         };
+        //affichageRep();
+
+        //Ne pas cliquer sur plusieurs réponse
+        /*function uneReponse() {
+            for (let i = 0; i < tab.option.length; i++) {
+                tab.option[i].classList.add("none");
+            }
+        };*/
+
+        /*function affichageRep() {
+            const totalQts = donnée.question.length;
+            for (let i = 0; i < totalQts; i++) {
+                const affichage = document.createElement("div");
+                afRep.appendChild(div);
+            }
+        }*/
+
+        //Menu résultat
+        document.querySelector('.btn-score').addEventListener('click', () => {
+            document.querySelector('.home-box').classList.add('hide');
+            document.querySelector('.quiz-box').classList.add('hide');
+            document.querySelector('.result-box').classList.remove('hide');
+
+            const totalQts = document.querySelector(".total-question");
+            totalQts.innerHTML = donnée.nombreQuestion;
+
+            const totalBonneRep = document.querySelector(".total-correct");
+            totalBonneRep.innerHTML = totalCorrect;
+
+            const totalMauvaiseRep = document.querySelector(".total-false");
+            totalMauvaiseRep.innerHTML = donnée.question.length - totalCorrect;
+
+            const totalBonneRepScore = document.querySelector(".total-correct-score");
+            totalBonneRepScore.innerHTML = Math.round((totalCorrect / donnée.question.length) * 100);
+        });
+
+        //Revenir au menu
+        document.querySelector('.btn-menu').addEventListener('click', () => {
+            document.querySelector('.home-box').classList.remove('hide');
+            document.querySelector('.quiz-box').classList.add('hide');
+            document.querySelector('.result-box').classList.add('hide');
+        });
     });

@@ -12,7 +12,8 @@
 <body>
     <!--Menu intro-->
     <div class="home-box custom-box">
-        <p>QUIZ : <span class="theme"></span></p>
+        <p>Thème du Quiz: <span class="theme"></span></p>
+        <p>Total de question <span class="question-tot"></span></p>
         <button type="button" class="btn btn-start">Start Quiz</button>
     </div>
 
@@ -38,6 +39,31 @@
             <div></div>
             <div></div>
         </div>
+    </div>
+
+    <!--Menu score-->
+    <div class="result-box custom-box hide">
+        <h1>Quiz Résultat</h1>
+        <table>
+            <tr>
+                <td>Total Question</td>
+                <td><span class="total-question"></span></td>
+            </tr>
+            <tr>
+                <td>Correct</td>
+                <td><span class="total-correct"></span></td>
+            </tr>
+            <tr>
+                <td>False</td>
+                <td><span class="total-false"></span></td>
+            </tr>
+            <tr>
+                <td>Pourcentage Score</td>
+                <td><p><span class="total-correct-score"></span> %</p></td>
+            </tr>
+        </table>
+
+        <button type="button" class="btn btn-menu">Return to menu</button>
     </div>
 </body>
 

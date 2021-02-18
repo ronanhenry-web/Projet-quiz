@@ -4,27 +4,32 @@
 
     "question": [{
             "q": "Quel est l'actuel president de la republique ?",
-            "option": ["Ewen", "Emmanuel", "Ronan", "Vincent"]
+            "option": ["Ewen", "Emmanuel", "Ronan", "Vincent"],
+            "reponse": "Emmanuel"
         },
 
         {
             "q": "Dans quel pays sommes nous ?",
-            "option": ["Uruguay", "France", "Allemagne", "Espagne"]
+            "option": ["Uruguay", "France", "Allemagne", "Espagne"],
+            "reponse": "France"
         },
 
         {
             "q": "Combien font 9 + 21 / 3 ?",
-            "option": [12, 11, 10, 16]
+            "option": [12, 11, 10, 16],
+            "reponse": 16
         },
 
         {
             "q": "Combien font 2 + 2 ?",
-            "option": [4, -4, 3, 5]
+            "option": [4, -4, 3, 5],
+            "reponse": 4
         },
 
         {
             "q": "Qui est Ronan HENRY ?",
-            "option": ["Européen", "Marocain", "Chinois", "Afro-Américain"]
+            "option": ["Européen", "Marocain", "Chinois", "Afro-Américain"],
+            "reponse": "Européen"
         }
     ]
 }

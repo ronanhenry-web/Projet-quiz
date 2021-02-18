@@ -18,6 +18,17 @@ body {
     margin: 40px auto;
     padding: 30px;
     border-radius: 10px;
+    animation: fadeInRight .5s ease;
+}
+@keyframes fadeInRight {
+    0% {
+        transform: translateX(40px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0px);
+        opacity: 0;
+    }
 }
 
 .custom-box::before,
@@ -65,6 +76,16 @@ body {
     font-size: 16px;
     cursor: pointer;
     display: inline-block;
+    opacity: 0.9;
+    transition: 0.3s;
+    box-shadow: 0 4px #999;
+}
+
+.btn:hover {opacity: 1}
+
+.btn:active {
+    box-shadow: 0 3px #666;
+    transform: translateY(4px);
 }
 
 /*Menu quiz*/
@@ -93,6 +114,35 @@ body {
     font-weight: 400;
     padding: 20px 0;
     margin: 0;
+}
+
+
+/*Modifier la case réponse et enlever .option*/
+.quiz-box .option-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.quiz-box .option-container .option.correct {
+    background-color: rgb(11, 104, 11);
+    animation: slideInLeft .5s ease forwards;
+}
+
+.quiz-box .option-container .option.faux {
+    background-color: rgb(167, 16, 16);
+    animation: slideInLeft .5s ease forwards;
+}
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-1%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+.quiz-box .option-container .option.none {
+    pointer-events: none;
 }
 
 .quiz-box .option-container .option {
@@ -125,4 +175,39 @@ body {
     border-radius: 50%;
     margin-right: 3px;
     margin-top: 15px;
+}
+
+/*Menu score*/
+.result-box {
+    text-align: center;
+}
+
+.result-box.hide {
+    display: none;
+}
+
+.result-box h1 {
+    font-size: 36px;
+    line-height: 42px;
+    color: #009688;
+}
+
+.result-box table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+}
+
+.result-box table td {
+    border: 1px solid #cccccc;
+    padding: 8px 15px;
+    font-weight: 500;
+    color: #000000;
+    width: 50%;
+    text-align: left;
+    font-size: 18px;
+}
+
+.result-box .btn {
+    margin-right: 20px;
 }
