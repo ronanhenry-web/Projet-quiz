@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="img/jpg" href="icon.jpg"/>
     <title>Quiz</title>
     <script src="main.js"></script>
 </head>
@@ -12,9 +13,11 @@
 <body>
     <!--Menu intro-->
     <div class="home-box custom-box">
+        <img class="img-menu" src="menu.jpg" height="193px" width="261px"/>
         <p>Thème du Quiz: <span class="theme"></span></p>
         <p>Total de question <span class="question-tot"></span></p>
         <button type="button" class="btn btn-start">Start Quiz</button>
+        
     </div>
 
     <!--Trois menus une menu principal, une qt et l'autre correction pour choisir mettre ou enlever le hide dans home-box, quiz-box ou result-box-->
@@ -63,7 +66,12 @@
             </tr>
         </table>
 
-        <button type="button" class="btn btn-menu">Return to menu</button>
+        <img class="img-score" src="score.jpg" height="159px" width="318px"/>
+
+        <form>
+            <!--Refresh = submit-->
+            <button type="submit" class="btn btn-menu">Return to menu</button>
+        </form>
     </div>
 </body>
 

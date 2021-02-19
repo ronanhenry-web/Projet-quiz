@@ -5,7 +5,7 @@ fetch("quiz.json")
     .then(function(response) { return response.json(); })
     .then(function(donnée) {
 
-        //Menu start
+        //Menu start ***
         const thème = document.querySelector(".theme");
         thème.innerHTML = donnée.theme;
 
@@ -24,8 +24,9 @@ fetch("quiz.json")
 
         const afRep = document.querySelector("answer-indicator");
 
-        //Menu quiz
+        //Menu quiz ***
         let tab = []
+
         for (let i = 0; i < donnée.question.length; i++) {
             tab.push(donnée.question[i]);
         }
@@ -43,7 +44,7 @@ fetch("quiz.json")
             let max = tab.length;
             let random = Math.floor(Math.random() * (max - min) + min);
             
-
+            //Compteur
             let containerQuestion = document.querySelector('.option-container');
             nombreQt = nombreQt + 1;
             document.querySelector('.numero-question').innerHTML = nombreQt;
@@ -51,57 +52,53 @@ fetch("quiz.json")
             while (containerQuestion.firstChild) {
                 containerQuestion.removeChild(containerQuestion.firstChild);
             }
+
             //Stop si toute les valeurs sont passées
             if (tab.length == 0) {
                 return;
             } else {
                 document.querySelector('.question-text').innerHTML = tab[random].q;
 
+                //Création et gestion du bouton
                 for (let i = 0; i < tab[random].option.length; i++) {
                     let button = document.createElement("button");
                     button.classList.add("option");
+                    button.classList.add("option-" + i);
                     button.value = tab[random].option[i];
                     button.innerHTML = tab[random].option[i];
                     let reponse = tab[random].reponse;
                     
                     button.addEventListener('click', () => {
-                        //console.log(reponse);
+
+                        //Bouton réponse
                         if(button.value == reponse) {
                             totalCorrect = totalCorrect + 1;
                             button.classList.add("correct");
-                            //console.log("bravo");
-                            //console.log(totalCorrect);
                         } else {
                             button.classList.add("faux");
-                            //console.log("dommage");
                         }
-                        //uneReponse();
+
+                        //Une réponse possible
+                        for (let j = 0; j < tab[random].option.length; j++) {
+                            document.querySelector(".option-" + j).disabled = true;
+                        }
+
+                        //Afficher ou pas le bouton
+                        if(tab.length == 1) {
+                            document.querySelector(".btn-score").style.display = "block";
+                            document.querySelector(".btn-next").style.display = "none";
+                        } else {
+                            document.querySelector(".btn-next").style.display = "block";
+                        }
+                        tab.splice(random, 1);
                     });
                     
                     document.querySelector('.option-container').appendChild(button);
-                    //console.log(donnée.question.option[length]);
                 }
-                tab.splice(random, 1);
             }
         };
-        //affichageRep();
 
-        //Ne pas cliquer sur plusieurs réponse
-        /*function uneReponse() {
-            for (let i = 0; i < tab.option.length; i++) {
-                tab.option[i].classList.add("none");
-            }
-        };*/
-
-        /*function affichageRep() {
-            const totalQts = donnée.question.length;
-            for (let i = 0; i < totalQts; i++) {
-                const affichage = document.createElement("div");
-                afRep.appendChild(div);
-            }
-        }*/
-
-        //Menu résultat
+        //Menu résultat ***
         document.querySelector('.btn-score').addEventListener('click', () => {
             document.querySelector('.home-box').classList.add('hide');
             document.querySelector('.quiz-box').classList.add('hide');

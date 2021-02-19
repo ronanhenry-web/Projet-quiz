@@ -2,7 +2,8 @@
     "theme": "Maths & Générale",
     "nombreQuestion": 5,
 
-    "question": [{
+    "question": [
+        {
             "q": "Quel est l'actuel president de la republique ?",
             "option": ["Ewen", "Emmanuel", "Ronan", "Vincent"],
             "reponse": "Emmanuel"
@@ -21,15 +22,15 @@
         },
 
         {
-            "q": "Combien font 2 + 2 ?",
-            "option": [4, -4, 3, 5],
-            "reponse": 4
+            "q": "Qui est notre prof principal ?",
+            "option": ["Faugeras", "Choiseul ☺", "Poesmann", "Grymx"],
+            "reponse": "Poesmann"
         },
 
         {
-            "q": "Qui est Ronan HENRY ?",
-            "option": ["Européen", "Marocain", "Chinois", "Afro-Américain"],
-            "reponse": "Européen"
+            "q": "Quelle est la meilleure région de France ?",
+            "option": ["Bretagne", "Corse", "Ile-de-France", "Pays de la Loire"],
+            "reponse": "Bretagne"
         }
     ]
 }
